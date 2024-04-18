@@ -41,10 +41,14 @@ JOIN countries c ON ic.Entity = c.name_coutries AND ic.Code = c.code_countries;
 
 USE pandemic;
 
-SELECT id, MAX(number_rabies) AS max, MIN(number_rabies) AS min,
-AVG(number_rabies) AS average FROM cases
+SELECT id, 
+AVG(number_rabies) AS average, 
+MAX(number_rabies) AS max, 
+MIN(number_rabies) AS min,
+SUM(number_rabies) AS sum 
+FROM cases
 WHERE Number_rabies <>''
-GROUP BY country_id
+GROUP BY id
 ORDER BY average DESC
 LIMIT 10;
 
